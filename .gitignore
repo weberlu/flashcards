@@ -1,0 +1,8 @@
+.idea/
+.DS_Store
+.metadata
+.recommenders
+Servers
+RemoteSystemsTempFiles
+
+node_modules/

@@ -1,0 +1,7 @@
+.container + .container {
+  margin-top: 50px;
+}
+
+.divider {
+  margin: 1.5rem 0;
+}
