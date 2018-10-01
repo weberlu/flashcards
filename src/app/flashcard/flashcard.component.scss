@@ -1,0 +1,136 @@
+
+
+
+
+
+/*
+.note-wrapper {
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  background-color: palegoldenrod;
+
+  .note {
+    position: relative;
+    width: 25rem;
+    min-height: 10rem;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+    cursor: pointer;
+
+    .note__side {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+
+      -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+
+      &.note__side--front {
+        background: green;
+        color: white;
+        -webkit-transform : rotateY(0deg);
+        -ms-transform     : rotateY(0deg);
+        transform         : rotateY(0deg);
+      }
+
+      &.note__side--back {
+        background: #23262d;
+        -webkit-transform : rotateY(-180deg);
+        -ms-transform     : rotateY(-180deg);
+        transform         : rotateY(-180deg);
+      }
+    }
+  }
+}
+*/
+
+
+
+
+
+.note-wrapper {
+  -webkit-perspective: 800px;
+  perspective: 800px;
+
+  .note {
+    /*
+     * Styling based on material "card" item.
+     */
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: white;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,0.125);
+    border-radius: 0.25rem;
+
+
+    position: relative;
+    width: 25rem;
+    min-height: 10rem;
+
+    text-align: center;
+    cursor: pointer;
+
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    .note__side {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      &.--totally-centered {
+        //@include vertical-align();
+
+        //top: 45%;
+        //transform: translateY(-50%);
+      }
+
+      &.note__side--front {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+
+      &.note__side--back {
+        -webkit-transform: rotateY(-180deg);
+        -ms-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+      }
+
+      &.--with-header {
+        /*
+         * Styling based on material "card >> card-header" item.
+         */
+        .--header {
+          padding: 0.75rem 1.25rem;
+          margin-bottom: 0;
+          background-color: rgba(0,0,0,0.03);
+          border-bottom: 1px solid rgba(0,0,0,0.125);
+        }
+        .--body {
+          //height: 7.5rem;
+          top: 2.5rem;
+
+          flex: 1 1 auto;
+          padding: 1.25rem;
+        }
+      }
+    }
+  }
+}
