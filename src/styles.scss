@@ -4,3 +4,10 @@
 @import "vendor/bootswatch/spacelab.bootstrap.min.css";
 
 @import "sass/mixins";
+
+
+
+
+.container + .container {
+  margin-top: 1rem;
+}

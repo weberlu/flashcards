@@ -14,21 +14,32 @@
   </div>
   -->
 
-  <div class="note-wrapper">
-    <div class="note" (click)="toggleFlip()" [@flipState]="flip">
-      <div class="note__side note__side--front --totally-centered">
-        to understand
-      </div>
-
-      <div class="note__side note__side--back --with-header">
-        <div class="--header">
-          to understand
+  <div class="centralizer">
+    <div class="note-wrapper">
+      <div class="note" (click)="toggleFlip()" [@flipState]="flip">
+        <div class="note__side note__side--front --with-header">
+          <div class="--header">to understand</div>
+          <div class="--body">...</div>
         </div>
-        <div class="--body">
-          verstehen, nachvollziehen, kapieren
+
+
+        <div class="note__side note__side--back --with-header">
+          <div class="--header">to understand</div>
+          <div class="--body">
+            verstehen, nachvollziehen, kapieren
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+</div>
+
+<div class="container">
+  <div class="centralizer">
+    <div class="row" style="margin:0">
+      <button type="button" class="btn btn-outline-danger">fail</button>
+      <button type="button" class="btn btn-outline-success">yeah</button>
+    </div>
+  </div>
 </div>
