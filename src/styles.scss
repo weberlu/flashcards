@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*@import "~bootstrap/dist/css/bootstrap.css";*/
+
+//@import "~bootstrap/scss/bootstrap.scss";
+
 @import "vendor/bootswatch/spacelab.bootstrap.min.css";
 
 @import "sass/mixins";
 
 
 
-
 .container + .container {
   margin-top: 1rem;
+}
+
+
+.--centralized {
+    width: 25rem;
+    margin: 0 auto;
 }

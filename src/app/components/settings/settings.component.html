@@ -1,0 +1,21 @@
+<h4>Einstellungen</h4>
+
+<!--<form name="SettingsForm">-->
+  <div class="row">
+    <label for="language">Sprachauswahl</label>
+    <select id="language" name="language" [(ngModel)]="model.language" required>
+      <option *ngFor="let lang of languages" value="{{ lang.value }}">
+        {{ lang.value }}
+      </option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="quantity">Wörter pro Durchgang</label>
+    <input id="quantity" name="quantity" type="number" [(ngModel)]="model.inquiryQuantity" required/>
+  </div>
+
+  <div class="row">
+    <input type="submit" class="btn btn-primary" value="Speichern" (click)="onSubmit()" />
+  </div>
+<!--</form>-->

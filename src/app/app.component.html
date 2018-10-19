@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">Startseite</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
           aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,17 +8,28 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/chapter-overview']">Kapitelübersicht</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" [routerLink]="['/cardbox-overview']">Karteikasten</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" [routerLink]="['/inquiry']">Abfragemodus</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" [routerLink]="['/settings']">Einstellungen</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/todo-list']">TODO's</a>
+      </li>
+
+      <!--
+        <a [routerLink]="['/product',product.id]" class="btn btn-info">View routed with Params</a>
+      -->
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -30,28 +41,19 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1 class="display-3">Welcome!</h1>
-    <h2>Angular & Bootstrap Demo</h2>
+    <h2>{{ title }}</h2>
     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
     <hr class="divider">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-
-    <hr class="divider">
-    <h4>{{title}}</h4>
-  </div>
-
-</div>
-
-
-<div class="container">
-  <div class="panel panel-primary">
-    <div class="panel-heading">Status 2</div>
-    <div class="panel-body">
-      <h3>Title 2</h3>
-      <p>lorem ipsum dolor sit amet ...</p>
-    </div>
   </div>
 </div>
 
 
-<app-flashcard></app-flashcard>
+<!--
+    TODO:
+    Eine Seite mittels ng-content wrappen, so dass auf jeder Seite dieselben Panels zuoberst sind?
+      https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b
+  -->
+<div class="container --centralized">
+  <router-outlet></router-outlet>
+</div>

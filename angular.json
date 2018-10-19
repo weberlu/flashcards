@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-with-bootstrap": {
+    "flashcards": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-with-bootstrap",
+            "outputPath": "dist/flashcards",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -54,18 +54,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-with-bootstrap:build"
+            "browserTarget": "flashcards:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-with-bootstrap:build:production"
+              "browserTarget": "flashcards:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-with-bootstrap:build"
+            "browserTarget": "flashcards:build"
           }
         },
         "test": {
@@ -99,7 +99,7 @@
         }
       }
     },
-    "angular-with-bootstrap-e2e": {
+    "flashcards-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "targets": {
@@ -107,11 +107,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-with-bootstrap:serve"
+            "devServerTarget": "flashcards:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-with-bootstrap:serve:production"
+              "devServerTarget": "flashcards:serve:production"
             }
           }
         },
@@ -127,5 +127,5 @@
       }
     }
   },
-  "defaultProject": "angular-with-bootstrap"
+  "defaultProject": "flashcards"
 }
