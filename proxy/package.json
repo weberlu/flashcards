@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "json-server --watch db.json"
+    "serve": "json-server --watch db.json -r router.json"
   },
   "author": "",
   "license": "ISC",

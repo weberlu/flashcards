@@ -4,8 +4,8 @@ export const SESSION_EXPIRES_AFTER_MINUTES = 30;
 
 export class Session {
   user: string;
-  private token: string;
-  private expires: Date;
+  token: string;
+  expires: Date;
 
   constructor(user: string = '', token: string = '') {
     this.user = user;

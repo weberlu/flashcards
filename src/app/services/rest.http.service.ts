@@ -5,13 +5,6 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 
-export const enum RestEndpoints {
-  AUTHENTICATION = '/users/authenticate',
-  EXPRESSIONS = '/expressions',
-  EXPRESSION = '/expressions/:id'
-}
-
-
 @Injectable()
 export class RestHttpService {
   private loading: boolean;
@@ -31,8 +24,8 @@ export class RestHttpService {
   /**
    * Send a GET request to the given endpoint with the given parameters.
    *
-   * @param endpoint
-   * @param params
+   * @param endpoint endpoint to address
+   * @param params query parameters to deliver
    */
   public doGet(endpoint: string, params: Object = {}): Observable<any> {
     return this.doRequest('GET', endpoint, { params: this.generateHttpParams(params) });
@@ -41,9 +34,9 @@ export class RestHttpService {
   /**
    * Send a POST request to the given endpoint with the given body data.
    *
-   * @param endpoint
-   * @param data
-   * @param params
+   * @param endpoint endpoint to address
+   * @param data request body data to deliver
+   * @param params query parameters to deliver
    */
   public doPost(endpoint: string, data: any = null, params: Object = {}): Observable<any> {
     return this.doRequest('POST', endpoint, { body: data, params: this.generateHttpParams(params) });
@@ -52,9 +45,9 @@ export class RestHttpService {
   /**
    * Send a PUT request to the given endpoint with the given body data.
    *
-   * @param endpoint
-   * @param data
-   * @param params
+   * @param endpoint endpoint to address
+   * @param data request body data to deliver
+   * @param params query parameters to deliver
    */
   public doPut(endpoint: string, data: any = null, params: Object = {}): Observable<any> {
     return this.doRequest('PUT', endpoint, { body: data, params: this.generateHttpParams(params) });
@@ -63,8 +56,9 @@ export class RestHttpService {
 
   /**
    * Send a DELETE request to the given endpoint with the given parameters.
-   * @param endpoint
-   * @param params
+   *
+   * @param endpoint endpoint to address
+   * @param params query parameters to deliver
    */
   public doDelete(endpoint: string, params: Object = {}): Observable<any> {
     return this.doRequest('DELETE', endpoint, { params: this.generateHttpParams(params) });
@@ -73,7 +67,8 @@ export class RestHttpService {
 
   /**
    * Generate a HttpParams object and fill in the key-value pairs from given parameter object.
-   * @param params
+   *
+   * @param params query parameters to deliver
    */
   private generateHttpParams(params: Object = {}): HttpParams {
     const httpParams: HttpParams = new HttpParams();
@@ -88,8 +83,8 @@ export class RestHttpService {
    * Method to send a request, where the request method is defined by the parameter.
    *
    * @param method one of the following: get, put, post, delete.
-   * @param url specific rest endpoint to invoke.
-   * @param options
+   * @param endpoint specific rest endpoint to invoke.
+   * @param options additional options that are delivered to http: request call
    */
   private doRequest(method: string, endpoint: string, options: Object = {}): Observable<any> {
     this.loading = true;
@@ -112,7 +107,8 @@ export class RestHttpService {
 
   /**
    * Handler for successfully resolved requests.
-   * @param response
+   *
+   * @param response success response
    */
   private handleSuccess(response: HttpResponse<any>): void {
     console.log('request succeeded: ', response);
@@ -121,7 +117,7 @@ export class RestHttpService {
 
   /**
    * Handler for failed requests.
-   * @param error
+   * @param error error response
    */
   private handleError(error: HttpErrorResponse): void {
     if (error.error instanceof ErrorEvent) {
@@ -138,7 +134,7 @@ export class RestHttpService {
 
   /**
    * Depending on the error status, navigate to the correct page.
-   * @param errorStatus
+   * @param errorStatus http status of error case
    */
   private navigate(errorStatus: number) {
     let targetPage: string;

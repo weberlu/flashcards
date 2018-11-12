@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { RestEndpoints } from '../enums/rest.endpoints.enum';
 import { AddExpressions, RemoveExpressions, UpdateExpression } from '../state/actions/expression.action';
 import { AppState } from '../state/app.state';
 import { Expression } from '../models/expression.model';
 import { StoreKey } from '../state/store.config';
-import { RestEndpoints, RestHttpService } from './rest.http.service';
+import { RestHttpService } from './rest.http.service';
 import { SettingsService } from './settings.service';
 
 @Injectable()

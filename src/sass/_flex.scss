@@ -1,0 +1,41 @@
+.--flex-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  /* default orientation */
+  justify-content: flex-start;
+
+  /* ---- classes to overwrite default orientation ---- */
+  .--justify-left {
+    justify-content: flex-start;
+  }
+
+  .--justify-center {
+    justify-content: center;
+  }
+
+  .--justify-right {
+    justify-content: flex-end;
+  }
+
+  .--justify-evenly {
+    justify-content: space-evenly;
+  }
+
+  .--centered-text {
+    text-align: center;
+  }
+}
+
+.--flex-column {
+  flex-direction: column;
+}
+
+.--flex-row {
+  flex-direction: row;
+}
+
+.--flex-item {
+  align-self: center;
+}

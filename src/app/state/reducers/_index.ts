@@ -1,5 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { Action, ActionReducer, ActionReducerMap, combineReducers, MetaReducer } from '@ngrx/store';
+import { routerReducer } from '@ngrx/router-store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { AppState } from '../app.state';
 import { storageConfig } from '../store.config';
@@ -21,7 +22,7 @@ export const metaReducers: Array<MetaReducer<AppState, Action>> = [localStorageS
 
 /*
  * Nested Reducers ::
- *    See issue for further information:  https://github.com/ngrx/platform/issues/306
+ *    See link for further information:  https://github.com/ngrx/platform/issues/306
  */
 const combinedReducers = () => {
   return {
@@ -29,12 +30,14 @@ const combinedReducers = () => {
       session: authReducer,
       settings: settingsReducer,
       expressions: expressionReducer,
-      todos: todoReducer // TODO remove
+      todos: todoReducer, // TODO remove,
+      router: routerReducer
     })
   };
 };
 
 export const reducerToken = new InjectionToken<ActionReducerMap<AppState>>('Reducers');
+
 export const reducerProvider = [
   { provide: reducerToken, useFactory: combinedReducers }
 ];

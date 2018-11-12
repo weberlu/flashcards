@@ -1,10 +1,14 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
@@ -24,6 +28,19 @@ import { RestHttpService } from './services/rest.http.service';
 import { SettingsService } from './services/settings.service';
 import { metaReducers, reducerToken, reducerProvider } from './state/reducers/_index';
 
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
+
+
+/**
+ * For NgbModule (which turns jQuery-based bootstrap components into angular components), have a look at:
+ *
+ *      https://ng-bootstrap.github.io
+ */
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +57,18 @@ import { metaReducers, reducerToken, reducerProvider } from './state/reducers/_i
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     FormsModule,
+    NgbModule, // https://ng-bootstrap.github.io
     RouterModule.forRoot(routes),
-    StoreModule.forRoot(reducerToken, {metaReducers})
+    StoreModule.forRoot(reducerToken, {metaReducers}),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [reducerProvider, {
       provide: HTTP_INTERCEPTORS,

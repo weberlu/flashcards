@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
+import { RestEndpoints } from '../enums/rest.endpoints.enum';
 import { AppState } from '../state/app.state';
 import { Session } from '../models/session.model';
 import { AddToken, RemoveToken } from '../state/actions/auth.action';
 import { StoreKey } from '../state/store.config';
-import { RestEndpoints, RestHttpService } from './rest.http.service';
+import { RestHttpService } from './rest.http.service';
 
 
 @Injectable()
@@ -13,7 +14,7 @@ export class AuthenticationService {
   private session: Session;
 
   constructor(private store: Store<AppState>, private restService: RestHttpService) {
-    this.store.select(StoreKey).subscribe((state => this.session = state.session));
+    this.store.select(StoreKey).subscribe((state => this.session = new Session(state.session.user, state.session.token)));
   }
 
   public login(identifier: string, password: string) {

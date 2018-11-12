@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RestEndpoints } from '../../enums/rest.endpoints.enum';
+import { CardBox } from '../../models/cardbox.model';
+import { RestHttpService } from '../../services/rest.http.service';
 
 @Component({
   selector: 'app-cardbox-overview',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardboxOverviewComponent implements OnInit {
 
-  constructor() {
+  cardboxes: CardBox[];
+
+  constructor(private httpService: RestHttpService) {
   }
 
   ngOnInit() {
+    this.httpService.doGet(RestEndpoints.CARD_BOXES).subscribe(cardboxes => this.cardboxes = cardboxes);
   }
 }
