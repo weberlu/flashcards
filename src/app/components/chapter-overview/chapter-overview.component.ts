@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RestEndpoints } from '../../enums/rest.endpoints.enum';
-import { Chapter } from '../../models/chapter.model';
 import { RestHttpService } from '../../services/rest.http.service';
 
 @Component({

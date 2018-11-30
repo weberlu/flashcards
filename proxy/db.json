@@ -61,5 +61,73 @@
       "wordCount": 0,
       "overflow": 1250
     }
-  ]
+  ],
+  "inquiryExpressions": [
+    {
+      "id": 1,
+      "meaning_de": "verstehen, nachvollziehen, kapieren",
+      "meaning_en": "to understand"
+    },
+    {
+      "id": 2,
+      "meaning_de": "essen",
+      "meaning_en": "to eat"
+    },
+    {
+      "id": 3,
+      "meaning_de": "gehen",
+      "meaning_en": "to walk"
+    },
+    {
+      "id": 4,
+      "meaning_de": "nachschlagen",
+      "meaning_en": "to look up"
+    },
+    {
+      "id": 5,
+      "meaning_de": "essen",
+      "meaning_en": "to eat"
+    },
+    {
+      "id": 6,
+      "meaning_de": "lesen",
+      "meaning_en": "to read"
+    },
+    {
+      "id": 7,
+      "meaning_de": "schlafen",
+      "meaning_en": "to sleep"
+    },
+    {
+      "id": 8,
+      "meaning_de": "liegen",
+      "meaning_en": "to lay"
+    },
+    {
+      "id": 9,
+      "meaning_de": "lügen",
+      "meaning_en": "to lie"
+    },
+    {
+      "id": 10,
+      "meaning_de": "sprechen",
+      "meaning_en": "to speak"
+    },
+    {
+      "id": 11,
+      "meaning_de": "Haus",
+      "meaning_en": "house"
+    },
+    {
+      "id": 12,
+      "meaning_de": "Garten",
+      "meaning_en": "garden"
+    },
+    {
+      "id": 13,
+      "meaning_de": "Geist",
+      "meaning_en": "ghost"
+    }
+  ],
+  "authenticate": {}
 }

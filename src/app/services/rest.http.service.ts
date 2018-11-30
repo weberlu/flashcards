@@ -89,7 +89,7 @@ export class RestHttpService {
   private doRequest(method: string, endpoint: string, options: Object = {}): Observable<any> {
     this.loading = true;
 
-    const url = [environment.apiUrl, endpoint].join('');
+    const url = this.replaceUrlPlaceholder(endpoint, options);
     const requestObservable: Observable<any> = this.http.request<any>(method, url, options);
 
     requestObservable.subscribe((response: HttpResponse<any>) => {
@@ -104,6 +104,28 @@ export class RestHttpService {
     return requestObservable;
   }
 
+  /**
+   * Checks if the given url has some placeholders inside (identified by ':<paramName>') and replaces it, if so.
+   * To get the correct replacement value, the parameter's name is used to find the value from data body (or request parameters).
+   *
+   * @param endpoint url which may contain a placeholder
+   * @param body data body
+   * @param params request parameters
+   */
+  private replaceUrlPlaceholder(endpoint: string, { body = null, params = null }: any): string {
+    const regexp = new RegExp('\/:([a-zA-Z0-9]*)[(\/.*)]?');
+    let url = [environment.apiUrl, endpoint].join('');
+
+    if (regexp.test(url)) {
+      let match;
+      while (match = regexp.exec(url)) {
+        const paramName = match[1]; // an example is "id". result[0] would match, for example, "/:id/"
+        const paramValue = body ? body[paramName] : params[paramName];
+        url = url.replace([':', paramName].join(''), paramValue);
+      }
+    }
+    return url;
+  }
 
   /**
    * Handler for successfully resolved requests.

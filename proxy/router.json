@@ -1,4 +1,6 @@
 {
   "/api/chapters": "/chapters",
-  "/api/cardboxes": "/cardboxes"
+  "/api/cardboxes": "/cardboxes",
+  "/api/expressions": "/inquiryExpressions",
+  "/api/authenticate": "/authenticate"
 }

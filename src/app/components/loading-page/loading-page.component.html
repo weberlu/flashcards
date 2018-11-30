@@ -1,0 +1,20 @@
+<!--
+    TODO:
+    Eine Seite mittels ng-content wrappen, so dass auf jeder Seite dieselben Panels zuoberst sind?
+      https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b
+  -->
+
+<div class="container">
+  <div class="loading-spinner" *ngIf="isLoading">
+    <p>... imagine a spinner here ... :-)</p>
+  </div>
+
+  <div class="alert alert-dismissible" [ngClass]="hint.cssClass" *ngIf="hint">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{hint.message}}
+  </div>
+
+  <div class="page-content" *ngIf="!isLoading">
+    <router-outlet></router-outlet>
+  </div>
+</div>

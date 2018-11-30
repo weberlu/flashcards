@@ -2,5 +2,14 @@
   "CHAPTER": "Chapter",
   "CARDBOX_OVERVIEW_TITLE": "Cardbox Overview",
   "CHAPTER_OVERVIEW_TITLE": "Chapter Overview",
-  "INQUIRY_TITLE": "Inquiry words ..."
+  "INQUIRY_TITLE": "Inquiry words ...",
+  "FLASHCARD_FAILED": "Nope",
+  "FLASHCARD_YEAH": "Yep",
+  "SETTINGS_LABEL_QUANTITY_NUMBER": "Words of one Inquiry",
+  "SETTINGS_LABEL_LANGUAGE": "Language",
+  "CARDBOX_OVERVIEW_WORDS": "Words",
+  "LOGIN_TITLE": "Login Mask",
+  "LOGIN_USERNAME": "Username",
+  "LOGIN_PASSWORD": "Password",
+  "LOGIN_SUBMIT": "login"
 }

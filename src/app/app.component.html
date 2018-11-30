@@ -39,6 +39,7 @@
 </nav>
 
 
+<!--
 <div class="container">
   <div class="jumbotron">
     <h2>{{ title }}</h2>
@@ -47,13 +48,9 @@
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   </div>
 </div>
+-->
 
 
-<!--
-    TODO:
-    Eine Seite mittels ng-content wrappen, so dass auf jeder Seite dieselben Panels zuoberst sind?
-      https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b
-  -->
-<div class="container --centralized">
-  <router-outlet></router-outlet>
+<div id="app-component">
+  <app-loading-page></app-loading-page>
 </div>

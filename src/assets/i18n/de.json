@@ -1,6 +1,15 @@
 {
   "CHAPTER": "Kapitel",
-  "CARDBOX_OVERVIEW_TITLE": "Übersicht Karteikasten",
-  "CHAPTER_OVERVIEW_TITLE": "Übersicht Kapitel",
-  "INQUIRY_TITLE": "Wörtli abfragen ..."
+  "CARDBOX_OVERVIEW_TITLE": "Karteikastenübersicht",
+  "CHAPTER_OVERVIEW_TITLE": "Kapitelübersicht",
+  "INQUIRY_TITLE": "Wörtli abfragen ...",
+  "FLASHCARD_FAILED": "Nope",
+  "FLASHCARD_YEAH": "Yep",
+  "SETTINGS_LABEL_QUANTITY_NUMBER": "Wörter pro Durchgang",
+  "SETTINGS_LABEL_LANGUAGE": "Sprache",
+  "CARDBOX_OVERVIEW_WORDS": "Wörter",
+  "LOGIN_TITLE": "Anmeldung",
+  "LOGIN_USERNAME": "Benutzername",
+  "LOGIN_PASSWORD": "Passwort",
+  "LOGIN_SUBMIT": "anmelden"
 }

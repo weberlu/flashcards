@@ -1,48 +1,16 @@
-.cardbox-counter {
-  width: 80px;
-  border: 1px solid orange;
 
-  &.cardbox-counter--1 {
-    height: 25px;
-    line-height: 25px;
+.list-group {
+
+  // reset the default list item's padding so that the cardbox-ID can draw a vertical line
+  .list-group-item {
+    padding: 0 !important;
+
+    div {
+      padding: 10px 20px;
+    }
+
+    .cardbox--identifier {
+      border-right: 1px solid rgba(0,0,0,0.125) !important;
+    }
   }
-
-  &.cardbox-counter--2 {
-    height: 35px;
-    line-height: 35px;
-  }
-
-  &.cardbox-counter--3 {
-    height: 45px;
-    line-height: 45px;
-  }
-
-  &.cardbox-counter--4 {
-    height: 55px;
-    line-height: 55px;
-  }
-
-  &.cardbox-counter--5 {
-    height: 65px;
-    line-height: 65px;
-  }
-
-  &.cardbox-counter--6 {
-    height: 75px;
-    line-height: 75px;
-  }
-
-  &.cardbox-counter--7 {
-    height: 85px;
-    line-height: 85px;
-  }
-}
-
-.cardbox-info {
-  color: #b3b3b3;
-  padding-left: 1rem;
-}
-
-.--border-correction + .--border-correction {
-  margin-top: -1px;
 }

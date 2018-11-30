@@ -1,7 +1,6 @@
 export const enum RestEndpoints {
-  AUTHENTICATION = '/users/authenticate',
-  CARD_BOXES = '/api/cardboxes',
+  AUTHENTICATION = '/authenticate',
+  CARD_BOXES = '/cardboxes',
   CHAPTERS = '/chapters',
-  EXPRESSIONS = '/expressions',
-  EXPRESSION = '/expressions/:id'
+  EXPRESSIONS = '/expressions'
 }

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { CommunicationService } from '../../services/communication.service';
+import { InquiryService } from '../../services/inquiry.service';
 
 enum FlipState {
+  INITIAL = 'initial',
   ACTIVE = 'active',
   INACTIVE = 'inactive'
 }
@@ -25,16 +28,23 @@ enum FlipState {
       state(FlipState.INACTIVE, style({
         transform: 'rotateY(0deg)'
       })),
+      state(FlipState.INITIAL, style({
+        transform: 'rotateY(0deg)'
+      })),
       transition('active => inactive', animate('500ms ease-out')),
-      transition('inactive => active', animate('500ms ease-in'))
+      transition('inactive => active', animate('500ms ease-in')),
+      transition('active => initial', animate('0ms ease-out'))
     ])
   ]
 })
-export class FlashcardComponent implements OnInit {
+export class FlashcardComponent implements OnInit, OnChanges {
   flip: FlipState;
 
+  @Input() expression: Expression;
 
-  constructor() {}
+  constructor(private inquiryService: InquiryService,
+              private communicationService: CommunicationService) {
+  }
 
   ngOnInit() {
     this.flip = FlipState.INACTIVE;
@@ -42,5 +52,29 @@ export class FlashcardComponent implements OnInit {
 
   toggleFlip() {
     this.flip = (this.flip === FlipState.INACTIVE) ? FlipState.ACTIVE : FlipState.INACTIVE;
+  }
+
+  getForeignMeaning(): string {
+    return this.inquiryService.getForeignMeaning(this.expression);
+  }
+
+  getNativeMeaning(): string {
+    return this.inquiryService.getNativeMeaning(this.expression);
+  }
+
+  // TODO: is this necessary?
+  getPronunciation(): string {
+    return 'Prönöunsieischän';
+  }
+
+  update(isKnown: boolean): void {
+    this.expression.isAnswered = true;
+    this.expression.isKnown = isKnown;
+    this.inquiryService.updateExpression(this.expression);
+    this.communicationService.say(`${this.expression.meaning_en} was known: ${isKnown}`);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.flip = FlipState.INITIAL;
   }
 }

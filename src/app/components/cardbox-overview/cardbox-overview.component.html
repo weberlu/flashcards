@@ -1,35 +1,15 @@
 <div class="container">
-  <div class="row">
-    <h4>{{'CARDBOX_OVERVIEW_TITLE' | translate}}</h4>
-    <!--
-    <p>
-      ... für jedes der 7 Fächer wird ein Rechteck gezeichnet, angefangen beim ersten Karteifach.
-      Mit zunehmender Kapazität soll das Rechteck grösser werden.
-      Im Inneren von jedem Rechteck wird die Anzahl abgelegter Wörter sowie die Maximalkapazität angezeigt.
-    </p>
-    -->
-  </div>
-
-  <div class="container --flex-container --flex-column">
-    <div *ngFor="let cardbox of cardboxes" class="row --border-correction --flex-row">
-      <div class="cardbox-counter cardbox-counter--{{cardbox.id}} --flex-item --centered-text">
+  <h4>{{'CARDBOX_OVERVIEW_TITLE' | translate}}</h4>
+  <ul class="list-group">
+    <li *ngFor="let cardbox of cardboxes; let idx = index"
+        class="list-group-item d-flex justify-content-between align-items-center cardbox-counter--{{cardbox.id}}">
+      <div class="cardbox--identifier">
         #{{cardbox.id}}
       </div>
-      <div class="cardbox-info --flex-item">
-        {{cardbox.wordCount}}/{{cardbox.overflow}}
-      </div>
-    </div>
-  </div>
 
-  <!--
-  <div class="row">
-    <br>
-    <p>
-      NB: es kann sein, dass ein Fach "überläuft". Dies geschieht dann, wenn das nachfolgende Fach voll ist,
-      d.h. der Benutzer die Wörter darin abfragt. Wörter, die nicht mehr korrekt übersetzt werden konnten,
-      wandern danach zurück in das vorhergehende Fach. Die Kapazität ist also lediglich als Grenzwert
-      zu verstehen, ab wann das Fach repetiert werden sollte.
-    </p>
-  </div>
-  -->
+      <div class="cardbox--words">
+        {{cardbox.wordCount}} / {{cardbox.overflow}} {{'CARDBOX_OVERVIEW_WORDS' | translate}}
+      </div>
+    </li>
+  </ul>
 </div>

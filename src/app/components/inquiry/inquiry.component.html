@@ -4,7 +4,13 @@
     <p>Alle Wörter, die vom Backend geladen worden sind, werden hier im Karteikärtchen-Modus nacheinander abgefragt.</p>
     <hr>
 
-    <app-flashcard></app-flashcard>
+    <app-flashcard *ngIf="expression" [expression]="expression"></app-flashcard>
+
+    <div *ngIf="!expression">
+      <p>alle Wörtli abgearbeitet --> weitere laden?</p>
+      <button (click)="continue()">[ja]</button>
+      <button (click)="stop()">[nein]</button>
+    </div>
 
     <hr>
     <p>

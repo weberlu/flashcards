@@ -24,16 +24,4 @@ export class Session {
       this.expires = new Date();
     }
   }
-
-  public hasToken(): boolean {
-    return !!this.token;
-  }
-
-  public getToken(): string {
-    return this.token || '';
-  }
-
-  public setToken(token: string): void {
-    this.token = token;
-  }
 }

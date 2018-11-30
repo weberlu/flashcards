@@ -1,12 +1,11 @@
 import { INITIAL_STATE } from '../app.state';
-import { Expression } from '../../models/expression.model';
 import { DeepCopyService } from '../../services/deepcopy.service';
 import { ExpressionAction, ExpressionActionTypes } from '../actions/expression.action';
 
 export function expressionReducer(state: Expression[] = INITIAL_STATE.state.expressions, action: ExpressionAction) {
   switch (action.type) {
     case ExpressionActionTypes.ADD_EXPRESSIONS:
-      const oldItems = DeepCopyService.clone(this.state);
+      const oldItems = DeepCopyService.clone(state);
       const newItems = DeepCopyService.clone(action.payload);
       return oldItems.concat(newItems);
 
@@ -18,7 +17,7 @@ export function expressionReducer(state: Expression[] = INITIAL_STATE.state.expr
         Object.assign({}, action.payload),
         ...objects.slice(index + 1)];
 
-    case ExpressionActionTypes.REMOVE_EXPRESSIONS:
+    case ExpressionActionTypes.REMOVE_EXPRESSION:
       return DeepCopyService.cloneAndRemove(state, action.payload);
 
     default:

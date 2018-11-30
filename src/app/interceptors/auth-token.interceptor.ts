@@ -1,17 +1,17 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { AppState } from '../state/app.state';
 import { AuthenticationService } from '../services/authentication.service';
 import { UpdateToken } from '../state/actions/auth.action';
+import { AppState } from '../state/app.state';
 
 @Injectable()
 export class AuthenticationTokenInterceptor implements HttpInterceptor {
 
-  constructor(private store: Store<AppState>, private authService: AuthenticationService, private router: Router) { }
+  constructor(private store: Store<AppState>,
+              private authService: AuthenticationService) { }
 
   /*
    * Tutorials about angular HttpInceptors ::
@@ -24,19 +24,17 @@ export class AuthenticationTokenInterceptor implements HttpInterceptor {
     if (this.authService.isAuthenticated()) {
       // don't forget to clone the request because HttpHeaders are immutable.
       request = request.clone({
-        headers: request.headers.set('X-auth-token', this.authService.getSessionToken())
-                                .set('Content-Type', 'application/json; charset=utf-8')
+        headers: request.headers
+          .set('X-auth-token', this.authService.getSessionToken())
+          .set('Content-Type', 'application/json; charset=utf-8')
       });
     }
 
     return next.handle(request).pipe(tap((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
-          console.log('Yieha, authentication request passed!');
-          this.store.dispatch(new UpdateToken());
-        }
-      }, (error: HttpErrorResponse) => {
-        console.error(`oops, something went wrong ... ${error.error.message}`);
-        // this.router.navigate(['login']);
-    }));
+      if (event instanceof HttpResponse) {
+        console.log('Yieha, authentication request passed!');
+        this.store.dispatch(new UpdateToken());
+      }
+    } /* }, (error: HttpErrorResponse) => {...} */));
   }
 }

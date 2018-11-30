@@ -1,5 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RestEndpoints } from '../enums/rest.endpoints.enum';
 import { AppState } from '../state/app.state';
@@ -17,12 +19,12 @@ export class AuthenticationService {
     this.store.select(StoreKey).subscribe((state => this.session = new Session(state.session.user, state.session.token)));
   }
 
-  public login(identifier: string, password: string) {
-    return this.restService.doPost(RestEndpoints.AUTHENTICATION, {identifier, password})
+  public login(username: string, password: string): Observable<HttpResponse<any>> {
+    return this.restService.doPost(RestEndpoints.AUTHENTICATION, { username: username, password: password })
       .pipe(map(response => {
         // login is considered to be successful if there's a jwt token in the response
         if (response && response.token) {
-          this.store.dispatch(new AddToken(new Session(identifier, response.token)));
+          this.store.dispatch(new AddToken(new Session(username, response.token)));
         }
 
         return response;
@@ -34,10 +36,10 @@ export class AuthenticationService {
   }
 
   public getSessionToken(): string {
-    return this.session.getToken();
+    return this.session.token;
   }
 
   public isAuthenticated(): boolean {
-    return this.session.hasToken() && !this.session.hasExpired();
+    return !!this.getSessionToken() && !this.session.hasExpired();
   }
 }

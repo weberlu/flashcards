@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RestEndpoints } from '../../enums/rest.endpoints.enum';
-import { CardBox } from '../../models/cardbox.model';
 import { RestHttpService } from '../../services/rest.http.service';
 
 @Component({
@@ -9,7 +8,6 @@ import { RestHttpService } from '../../services/rest.http.service';
   styleUrls: ['./cardbox-overview.component.scss']
 })
 export class CardboxOverviewComponent implements OnInit {
-
   cardboxes: CardBox[];
 
   constructor(private httpService: RestHttpService) {

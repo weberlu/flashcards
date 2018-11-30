@@ -1,10 +1,9 @@
 import { Action } from '@ngrx/store';
-import { Expression } from '../../models/expression.model';
 
 export enum ExpressionActionTypes {
   ADD_EXPRESSIONS = 'ADD_EXPRESSIONS',
   UPDATE_EXPRESSION = 'UPDATE_EXPRESSION',
-  REMOVE_EXPRESSIONS = 'REMOVE_EXPRESSIONS'
+  REMOVE_EXPRESSION = 'REMOVE_EXPRESSION'
 }
 
 export class AddExpressions implements Action {
@@ -17,9 +16,9 @@ export class UpdateExpression implements Action {
   constructor(public payload: Expression) {}
 }
 
-export class RemoveExpressions implements Action {
-  readonly type = ExpressionActionTypes.REMOVE_EXPRESSIONS;
-  constructor(public payload: Array<Expression>) {}
+export class RemoveExpression implements Action {
+  readonly type = ExpressionActionTypes.REMOVE_EXPRESSION;
+  constructor(public payload: Expression) {}
 }
 
-export type ExpressionAction = AddExpressions | UpdateExpression | RemoveExpressions;
+export type ExpressionAction = AddExpressions | UpdateExpression | RemoveExpression;

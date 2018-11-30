@@ -1,4 +1,4 @@
-<div class="container">
+<div class="row">
 
 
   <!-- ========  ORIGINAL  ======== -->
@@ -20,25 +20,28 @@
   <div class="note-wrapper">
     <div class="note" (click)="toggleFlip()" [@flipState]="flip">
       <div class="note__side note__side--front --with-header">
-        <div class="--header">&laquo;to understand&raquo;</div>
+        <div class="--header">&laquo;{{ getForeignMeaning() }}&raquo;</div>
         <div class="--body">
           <span style="font-size:2em">?</span>
         </div>
       </div>
       <div class="note__side note__side--back --with-header">
-        <div class="--header">&laquo;to understand&raquo;</div>
+        <div class="--header">&laquo;{{ getForeignMeaning() }}&raquo;</div>
         <div class="--body">
-          <b>verstehen, nachvollziehen, kapieren</b>
+          <b>{{ getNativeMeaning() }}</b>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
-<div class="container">
+<div class="row">
   <div class="row" style="margin:0">
-    <button type="button" class="btn btn-outline-danger">fail</button>
-    <button type="button" class="btn btn-outline-success">yeah</button>
+    <button type="button" class="btn btn-outline-danger" (click)="update(false)">
+      {{'FLASHCARD_FAILED' | translate}}
+    </button>
+    <button type="button" class="btn btn-outline-success" (click)="update(true)">
+      {{'FLASHCARD_YEAH' | translate}}
+    </button>
   </div>
 </div>
